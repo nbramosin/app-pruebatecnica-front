@@ -1,0 +1,79 @@
+.producto-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 10rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.filters {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: #00acc1;
+  padding: 16px;
+  border-radius: 6px;
+  margin: 15px 0;
+}
+
+.filters mat-form-field {
+  background: white;
+  border-radius: 5px;
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  font-weight: bold;
+}
+
+.titulo{
+  font-size: 30px; 
+  font-weight: 500; 
+  letter-spacing: 0.3px;
+}
+
+.btn-nuevo-producto{
+  background: #00acc1 !important; 
+  height: 48px; 
+  border-radius: 3px; 
+  font-size: 18px; 
+  font-weight: 400; 
+  letter-spacing: 0.5px;
+}
+
+.btn-buscar{
+  margin: 0 10px; 
+  width: 35%; 
+  border-radius: 3px; 
+  height: 48px; 
+  background: #677279 !important; 
+  color: #fff !important; 
+  font-weight: 400; 
+  letter-spacing: 0.5px;
+}
+
+::ng-deep .mat-mdc-form-field-subscript-wrapper, .mat-mdc-form-field-bottom-align::before{
+  display: none !important;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper{
+  height: 48px !important;
+}
+
+::ng-deep .mdc-text-field--outlined .mat-mdc-form-field-infix, .mdc-text-field--no-label .mat-mdc-form-field-infix{
+  padding-top: 12px !important;
+}

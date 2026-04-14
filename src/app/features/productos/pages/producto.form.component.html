@@ -1,0 +1,110 @@
+<div class="producto-container">
+    <mat-card class="container">
+        <div class="header">
+            <h2 style="font-size: 30px; font-weight: 500; letter-spacing: 0.3px;">Registrar Producto</h2>
+            <button (click)="crearProducto()" mat-flat-button color="primary" style="background: #00acc1; height: 48px; border-radius: 3px; font-size: 18px; font-weight: 400; letter-spacing: 0.5px;">
+                <mat-icon style="margin-right: 5px !important; font-size: 20px;" >save</mat-icon>
+                Registrar Producto
+            </button>
+        </div>
+        <mat-divider></mat-divider>
+
+        <form [formGroup]="formDatosProd">
+            <div class="form">
+                <div class="form-display-flex--m mb-2">
+                    <mat-label style="color: #fff; ">Nombre:</mat-label>
+                    <mat-form-field appearance="outline" class="example-full-width mt-1 mb-0">
+                        <input 
+                            matInput 
+                            formControlName="nombreFormControl">
+
+                            @if (formDatosProd.get('nombreFormControl')?.value) {
+                                <button 
+                                    matSuffix 
+                                    matIconButton 
+                                    aria-label="Clear" 
+                                    type="button" 
+                                    (click)="limpiarCampo('nombreFormControl')">
+                                    <mat-icon style="height: 46px !important">close</mat-icon>
+                                </button>
+                            }
+                             
+                    </mat-form-field>
+                    <mat-error *ngIf="formDatosProd.get('nombreFormControl')?.hasError('required') && 
+                    (formDatosProd.get('nombreFormControl')?.dirty || 
+                    formDatosProd.get('nombreFormControl')?.touched)">
+                      El campo es <strong>requerido</strong>
+                  </mat-error>
+            </div>
+            <div class="form-display-flex--m mb-2">
+                <mat-label style="color: #fff;">Precio:</mat-label>
+                    <mat-form-field appearance="outline" class="example-full-width mt-1 mb-0">
+                        <input 
+                            matInput
+                            formControlName="precioFormControl">
+
+                            @if (formDatosProd.get('precioFormControl')?.value) {
+                                <button 
+                                    matSuffix 
+                                    matIconButton 
+                                    aria-label="Clear" 
+                                    type="button" 
+                                    (click)="limpiarCampo('precioFormControl')">
+                                    <mat-icon style="height: 46px !important;">close</mat-icon>
+                                </button>
+                            }
+                            
+                    </mat-form-field>
+                    <mat-error *ngIf="formDatosProd.get('precioFormControl')?.hasError('required') && 
+                        (formDatosProd.get('precioFormControl')?.dirty || 
+                        formDatosProd.get('precioFormControl')?.touched)">
+                        El campo es <strong>requerido</strong>
+                    </mat-error>
+
+                    <mat-error *ngIf="formDatosProd.get('precioFormControl')?.hasError('min')">
+                        El precio debe ser <strong>mayor a 0</strong>
+                    </mat-error>
+
+                    <mat-error *ngIf="formDatosProd.get('precioFormControl')?.hasError('pattern')">
+                        Solo se permiten decimales con <strong>máximo 2 dígitos</strong>
+                    </mat-error>
+            </div>
+            <div class="form-display-flex--m mb-2">
+                <mat-label  style="color: #fff;">Fecha Creación:</mat-label>
+                    <mat-form-field appearance="outline" class="example-full-width mt-1">
+                        <input 
+                            matInput
+                            [matDatepicker]="picker"
+                            [max]="today"
+                            formControlName="fechaCreacionFormControl">
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+
+                            @if (formDatosProd.get('fechaCreacionFormControl')?.value) {
+                                <button 
+                                    matSuffix 
+                                    matIconButton 
+                                    aria-label="Clear" 
+                                    type="button" 
+                                    (click)="limpiarCampo('fechaCreacionFormControl')">
+                                    <mat-icon style="height: 30px !important;">close</mat-icon>
+                                </button>
+                            }
+                             
+                    </mat-form-field>
+                    <mat-error *ngIf="formDatosProd.get('fechaCreacionFormControl')?.hasError('required') && 
+                        (formDatosProd.get('fechaCreacionFormControl')?.dirty || 
+                        formDatosProd.get('fechaCreacionFormControl')?.touched)">
+                        El campo es <strong>requerido</strong>
+                    </mat-error>
+                    <mat-error *ngIf="formDatosProd.get('fechaCreacionFormControl')?.hasError('fechaPasada')">
+                        No se puede registrar el <strong>producto con fecha anterior a hoy</strong>
+                    </mat-error>
+            </div>
+            </div>
+
+            </form>
+
+        
+    </mat-card>
+</div>
